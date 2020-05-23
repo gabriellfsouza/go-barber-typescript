@@ -40,6 +40,6 @@ describe('CreateUser', () => {
 
     const user = await createUser.execute(fakeData);
 
-    expect(createUser.execute(fakeData)).rejects.toBeInstanceOf(AppError);
+    await expect(createUser.execute(fakeData)).rejects.toBeInstanceOf(AppError);
   });
 });

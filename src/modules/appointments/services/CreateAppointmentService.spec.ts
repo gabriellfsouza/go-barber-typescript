@@ -30,7 +30,7 @@ describe('CreateAppointment', () => {
 
     const appointment = await createAppointment.execute(fakeData);
 
-    expect(createAppointment.execute(fakeData)).rejects.toBeInstanceOf(
+    await expect(createAppointment.execute(fakeData)).rejects.toBeInstanceOf(
       AppError,
     );
   });
