@@ -122,7 +122,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"gabriellfsouza@gmail.com\",\n\t\"password\": \"123456\"\n}",
+							"raw": "{\n\t\"email\": \"gabriellfsouza@gmail.com\",\n\t\"password\": \"123123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,6 +148,137 @@
 		{
 			"name": "Users",
 			"item": [
+				{
+					"name": "Password",
+					"item": [
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"gabriellfsouza@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/password/forgot",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"password",
+										"forgot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"password\":\"123123\",\n\t\"token\":\"17429cbe-61a0-4261-9392-c9416387ee53\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/password/reset",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"password",
+										"reset"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Show Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Gabriel Lima\",\n\t\"email\": \"gabriellfsouza@gmail.com\",\n\t\"old_password\": \"123456\",\n\t\"password\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
 				{
 					"name": "Create",
 					"event": [
