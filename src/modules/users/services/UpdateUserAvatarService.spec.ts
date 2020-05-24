@@ -7,20 +7,26 @@ import FakeStorageProvider from '@shared/container/providers/StorageProvider/fak
 import UpdateUserAvatarService from './UpdateUserAvatarService';
 
 describe('UpdateUserAvatar', () => {
-  it("should be able to update a user's avatar", async () => {
-    const fakeUserRepository = new FakeUsersRepository();
-    const fakeStorageProvider = new FakeStorageProvider();
-    const updateUserAvatar = new UpdateUserAvatarService(
+  let fakeUserRepository: FakeUsersRepository;
+  let fakeStorageProvider: FakeStorageProvider;
+  let updateUserAvatar: UpdateUserAvatarService;
+
+  const fakeData = {
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    password: '123456',
+  };
+
+  beforeEach(() => {
+    fakeUserRepository = new FakeUsersRepository();
+    fakeStorageProvider = new FakeStorageProvider();
+    updateUserAvatar = new UpdateUserAvatarService(
       fakeUserRepository,
       fakeStorageProvider,
     );
+  });
 
-    const fakeData = {
-      name: 'John Doe',
-      email: 'johndoe@example.com',
-      password: '123456',
-    };
-
+  it("should be able to update a user's avatar", async () => {
     const user = await fakeUserRepository.create(fakeData);
 
     await updateUserAvatar.execute({
@@ -56,12 +62,6 @@ describe('UpdateUserAvatar', () => {
       fakeUserRepository,
       fakeStorageProvider,
     );
-
-    const fakeData = {
-      name: 'John Doe',
-      email: 'johndoe@example.com',
-      password: '123456',
-    };
 
     const user = await fakeUserRepository.create(fakeData);
 
