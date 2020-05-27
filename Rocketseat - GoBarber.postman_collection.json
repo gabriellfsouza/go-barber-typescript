@@ -9,12 +9,196 @@
 			"name": "Appointments",
 			"item": [
 				{
+					"name": "Providers",
+					"item": [
+						{
+							"name": "Show Providers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/providers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"providers"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Availability",
+					"item": [
+						{
+							"name": "AvailabilityMonth",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"month\": 4,\n\t\"year\": 2020\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/providers/7df5125f-7025-48d3-9be7-20e0de7c9b56/month-availability",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"providers",
+										"7df5125f-7025-48d3-9be7-20e0de7c9b56",
+										"month-availability"
+									],
+									"query": [
+										{
+											"key": "month",
+											"value": "4",
+											"disabled": true
+										},
+										{
+											"key": "year",
+											"value": "2020",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AvailabilityDay",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"day\": 27,\n\t\"month\": 5,\n\t\"year\": 2020\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/providers/7df5125f-7025-48d3-9be7-20e0de7c9b56/day-availability",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"providers",
+										"7df5125f-7025-48d3-9be7-20e0de7c9b56",
+										"day-availability"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Create",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"id": "b8a62173-ff8a-488f-b8e0-e09ae816d2cf",
+								"exec": [
+									"postman.setGlobalVariable('timestampUtcIso8601', (new Date()).toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"provider_id\": \"7df5125f-7025-48d3-9be7-20e0de7c9b56\",\n\t\"date\": \"2020-05-27 08:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/appointments/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"appointments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Function",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "78e91bc3-f16c-4e19-a6f5-2f421c99bf89",
 								"exec": [
 									"postman.setGlobalVariable('timestampUtcIso8601', (new Date()).toISOString());"
 								],

@@ -11,7 +11,7 @@ export default class ListProvidersService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-  ) { }
+  ) {}
 
   public async execute({ user_id }: IRequest): Promise<User[]> {
     return this.usersRepository.findAllProviders({ except_user_id: user_id });

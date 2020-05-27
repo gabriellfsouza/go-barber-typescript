@@ -15,14 +15,19 @@ describe('ListProviderMonthAvailability', () => {
   it('should be able to list the month availability from provider', async () => {
     const avail = Array.from({ length: 10 }, (_, idx) => idx);
 
-    await Promise.all(avail.map(idx => fakeAppointmentsRepository.create({
-      provider_id: 'user',
-      date: new Date(2020, 4, 20, 8 + idx, 0, 0),
-    })));
-
+    await Promise.all(
+      avail.map(idx =>
+        fakeAppointmentsRepository.create({
+          provider_id: 'user',
+          user_id: 'user',
+          date: new Date(2020, 4, 20, 8 + idx, 0, 0),
+        }),
+      ),
+    );
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
+      user_id: 'user',
       date: new Date(2020, 4, 21, 8, 0, 0),
     });
 

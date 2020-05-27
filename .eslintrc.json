@@ -2,7 +2,7 @@
   "env": {
     "es6": true,
     "node": true,
-    "jest": true,
+    "jest": true
   },
   "extends": [
     "airbnb-base",
@@ -19,8 +19,17 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "jest"
+  ],
   "rules": {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -40,7 +49,9 @@
     ],
     "@typescript-eslint/interface-name-prefix": [
       "error",
-      { "prefixWithI": "always" }
+      {
+        "prefixWithI": "always"
+      }
     ]
   },
   "settings": {
