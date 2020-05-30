@@ -2,9 +2,9 @@ import { injectable, inject } from 'tsyringe';
 
 import uploadConfig from '@configs/uploadConfig';
 import AppError from '@shared/errors/AppError';
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
-import IStorageProvider from '@shared/container/providers/StorageProvider/model/IStorageProvider';
 
 interface IRequestDTO {
   user_id: string;

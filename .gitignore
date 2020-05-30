@@ -2,5 +2,13 @@ node_modules
 dist
 yarn.lock
 
+build/
+coverage/
+
+
+ormconfig.json
+.env
+
+temp/
 tmp/*
 !tmp/.gitkeep
