@@ -1,17 +1,24 @@
 import AppError from '@shared/errors/AppError';
-import CreateUserService from './CreateUserService';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
+import CreateUserService from './CreateUserService';
 
 describe('CreateUser', () => {
   let fakeUserRepository: FakeUsersRepository;
   let fakeHashProvider: FakeHashProvider;
+  let fakeCacheProvider: FakeCacheProvider;
   let createUser: CreateUserService;
 
   beforeEach(() => {
     fakeUserRepository = new FakeUsersRepository();
+    fakeCacheProvider = new FakeCacheProvider();
     fakeHashProvider = new FakeHashProvider();
-    createUser = new CreateUserService(fakeUserRepository, fakeHashProvider);
+    createUser = new CreateUserService(
+      fakeUserRepository,
+      fakeHashProvider,
+      fakeCacheProvider,
+    );
   });
 
   it('should be able to create a new user', async () => {
@@ -35,7 +42,7 @@ describe('CreateUser', () => {
       password: '123456',
     };
 
-    const user = await createUser.execute(fakeData);
+    await createUser.execute(fakeData);
 
     await expect(createUser.execute(fakeData)).rejects.toBeInstanceOf(AppError);
   });
