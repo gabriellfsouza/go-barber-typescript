@@ -341,6 +341,18 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec464dde-9cab-42ba-8032-52406585b562",
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.environment.set(\"token\", data.token);"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -440,6 +452,18 @@
 					"item": [
 						{
 							"name": "Show Profile",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1ee61fa3-9ce0-4a58-a367-7ef04129745a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",

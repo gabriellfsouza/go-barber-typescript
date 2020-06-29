@@ -18,6 +18,10 @@ class Appointment {
   @Column()
   provider_id: string;
 
+  // Eager Loading
+
+  // @ManyToOne(() => User, { eager: true })
+  // @ManyToOne(() => User, { lazy: true }) const user = await provider.user;
   @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
   provider: User;
