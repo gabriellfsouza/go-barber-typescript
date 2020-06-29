@@ -1,7 +1,7 @@
-import SendForgotPasswordEmailService from './SendForgotPasswordEmailService';
-import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeMailProvider from '@shared/container/providers/MailProvider/fakes/FakeMailProvider';
 import AppError from '@shared/errors/AppError';
+import SendForgotPasswordEmailService from './SendForgotPasswordEmailService';
+import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeUserTokensRepository from '../repositories/fakes/FakeUserTokensRepository';
 
 describe('SendForgotPasswordEmail', () => {
