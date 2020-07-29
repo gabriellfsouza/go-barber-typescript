@@ -1,7 +1,8 @@
 node_modules
 dist
 yarn.lock
-
+yarn-error.log
+coverage
 build/
 coverage/
 
