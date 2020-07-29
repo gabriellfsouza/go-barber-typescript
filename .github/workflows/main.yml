@@ -41,4 +41,18 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
         source: ".,!node_modules" 
-        target: "~/app/go-barber-typescript" 
+        target: "~/app/go-barber-typescript"
+    
+    - name: Install app dependencies on Digital Ocean, migrations and restart service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }} 
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd ~/app/go-barber-typescript
+          yarn
+          cd ~/app/go-barber-typescript
+          ./node_modules/.bon/typeorm migration:run
+          pm2 restart gobarber-api
